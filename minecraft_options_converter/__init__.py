@@ -10,7 +10,7 @@ def main():
                         default=sys.stdin, help='Original options.txt')
     parser.add_argument('-o', '--output', type=argparse.FileType('a'),
                         default=sys.stdout, help='New options.txt')
-    parser.add_argument('-f', '--forge-modifiers', action='store_false',
+    parser.add_argument('-f', '--forge-modifiers', action='store_true',
                         help='Write modifiers in FML format')
     parser.add_argument('-I', '--jek-input', type=argparse.FileType('r'),
                         default=None, help='Original options.justenoughkeys.txt')
