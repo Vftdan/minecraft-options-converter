@@ -16,6 +16,10 @@ def main():
                         default=None, help='Original options.justenoughkeys.txt')
     parser.add_argument('-O', '--jek-output', type=argparse.FileType('a'),
                         default=None, help='New options.justenoughkeys.txt')
+    parser.add_argument('--amecs-input', type=argparse.FileType('r'),
+                        default=None, help='Original options.amecsapi.txt')
+    parser.add_argument('--amecs-output', type=argparse.FileType('a'),
+                        default=None, help='New options.amecsapi.txt')
     for mod in ('alt', 'control', 'shift'):
         parser.add_argument(f'--{mod}-side', type=str, choices=('left', 'right'),
                             default='left', help=f'Which "{mod}" to use when '
@@ -26,8 +30,10 @@ def main():
         'alt': args.alt_side,
         'control': args.control_side,
         'shift': args.shift_side,
-    }, args.target, args.forge_modifiers, args.jek_input, args.jek_output)
+    }, args.target, args.forge_modifiers, args.jek_input, args.jek_output,
+       amecs_ifile=args.amecs_input, amecs_ofile=args.amecs_output)
 
-    for f in (args.input, args.output, args.jek_input, args.jek_output):
+    for f in (args.input, args.output, args.jek_input, args.jek_output,
+              args.amecs_input, args.amecs_output):
         if f:
             f.close()
